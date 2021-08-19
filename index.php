@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <h1>Hello, world!</h1>
+    <h1>Hello world!</h1>
     
 
     
@@ -28,9 +28,9 @@
           let url="https://api.thingspeak.com/channels/1458413/feeds.json?results=2";
           $.getJson(url)
             .done(function(data)){
-
+              console.log(data);
             })
-            .fail(function(error)){
+            .fail(function(error){
 
 });
       });
