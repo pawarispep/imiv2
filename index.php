@@ -32,7 +32,7 @@
             });
             .fail(function(error){
 
-});
+})
       });
 
 
