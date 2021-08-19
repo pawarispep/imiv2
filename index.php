@@ -15,14 +15,6 @@
 
   <body>
     <h1>Hello, world!</h1>
-    <div class="row">
-        <div class="col-4">
-            <iframe src="https://thingspeak.com/channels/1458413/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15" frameborder="0" class="src"></iframe>
-        </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-
-    </div>
     
 
     
@@ -32,8 +24,16 @@
   </body>
   <script>
       $(()=>{
-          alert("Hello");
-      })
+          //alert("Hello");
+          let url="https://api.thingspeak.com/channels/1458413/feeds.json?results=2";
+          $.getJson(url)
+            .done(function(data)){
+
+            })
+            .fail(function(error)){
+
+});
+      });
 
 
   </script>
