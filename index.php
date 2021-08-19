@@ -29,7 +29,7 @@
           $.getJson(url)
             .done(function(data){
               console.log(data);
-            });
+            })
             .fail(function(error){
 
             });
