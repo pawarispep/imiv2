@@ -27,7 +27,7 @@
           //alert("Hello");
           let url="https://api.thingspeak.com/channels/1458413/feeds.json?results=2";
           $.getJson(url)
-            .done(function(data)){
+            .done(function(data){
               console.log(data);
             });
             .fail(function(error){
