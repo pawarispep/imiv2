@@ -32,8 +32,8 @@
             });
             .fail(function(error){
 
-})
-      });
+            });
+      })
 
 
   </script>
