@@ -15,23 +15,26 @@
     
     <div class="container">
       <div class="class row">
-        <div class="class col-6">
+        <div class="class col-4">
           <canvas id="myChart" width="400" height="200"></canvas>
         </div>
-        <div class="class col-6">
+        <div class="class col-4">
           <canvas id="myChart2" width="400" height="200"></canvas>
         </div>
+        <div class="class col-4">
+          <canvas id="myChart3" width="400" height="200"></canvas>
+        </div>
+
       </div>
 
       <div class="class row">
         <div class="class col-3">
+
           <div class="class row">
             <div class="class col-4"><b>Temperature</b></div>
             <div class="col-8" >
               <span id="lastTemperature"></span>
             </div>
-              
-            
           </div>
 
           <div class="class row">
@@ -39,18 +42,23 @@
             <div class="col-8" >
               <span id="lastHumidity"></span>
             </div>
-              
-            
           </div>
+
+          <div class="class row">
+            <div class="class col-4"><b>Light_Status</b></div>
+            <div class="col-8" >
+              <span id="lightStatus"></span>
+            </div>
+          </div>
+
 
           <div class="class row">
             <div class="class col-4"><b>Update</b></div>
             <div class="col-8" >
               <span id="lastUpdate"></span>
             </div>
-              
-            
           </div>
+
         </div>
       </div>
     </div>
@@ -86,12 +94,26 @@
           }
       });
     }
+
+    function showGraph(data3){
+      var ctxyz=document.getElementById('myChart3').getContext('2d');
+      var myChart=new Chart(ctxyz,{
+          type:'line',
+          data:{
+            labels:data3.xlabel,
+            datasets:[{
+                label:data3.label,
+                data:data3.data
+            }]
+          }
+      });
+    }
       
       
      
       $(()=>{
           
-          let url="https://api.thingspeak.com/channels/1458413/feeds.json?results=50";
+          let url="https://api.thingspeak.com/channels/1458413/feeds.json?update";
           $.getJSON(url)
             .done(function(data){
               //console.log(data);
@@ -109,11 +131,19 @@
              var xlabel=[];
              var temp=[];
              var humi=[];
+             var light=[];
+             var light_status;
              
              $.each(feed,(k,v)=>{
                 xlabel.push(v.entry_id);
                 humi.push(v.field1);
                 temp.push(v.field2);
+                light.push(v.field3);
+                if(light>500){
+                  light_status="dark";
+                }else {
+                  light_status="light";
+                }
                 console.log(k,humi);
              });
              
@@ -130,10 +160,17 @@
               data2.label=chan.field1;
               showLine(data2);
 
+              var data3=new Object();
+              data3.xlabel=xlabel;
+              data3.data=light;
+              data3.label=chan.field3;
+              showGraph(data3);
+
 
               
               $("#lastTemperature").text(feed[0].field2+" C");
               $("#lastHumidity").text(feed[0].field1+" %");
+              $("#lightStatus").text(light_status);
               $("#lastUpdate").text(dateStr);
               console.log(humi);
               
