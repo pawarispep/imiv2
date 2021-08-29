@@ -134,7 +134,7 @@
              var light=[];
              var light_status;
              
-             $.each(feed,(k,v)=>{
+             /*$.each(feed,(k,v)=>{
                 xlabel.push(v.entry_id);
                 humi.push(v.field1);
                 temp.push(v.field2);
@@ -144,13 +144,13 @@
                 }else {
                   light_status="light";
                 }
-                */
+                
 
 
 
                 
                 
-             });
+             });*/
              
               var data=new Object();
               data.xlabel=xlabel;
