@@ -134,12 +134,12 @@
              var light=[];
              var light_status;
              
-             /*$.each(feed,(k,v)=>{
+             $.each(feed,(k,v)=>{
                 xlabel.push(v.entry_id);
                 humi.push(v.field1);
                 temp.push(v.field2);
                 light.push(v.field3);
-                /*if(light>500){
+                if(light>500){
                   light_status="dark";
                 }else {
                   light_status="light";
@@ -150,7 +150,7 @@
 
                 
                 
-             });*/
+             });
              
               var data=new Object();
               data.xlabel=xlabel;
