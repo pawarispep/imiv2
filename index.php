@@ -113,7 +113,7 @@
      
       $(()=>{
           
-          let url="https://api.thingspeak.com/channels/1458413/feeds.json?update";
+          let url="https://api.thingspeak.com/channels/1458413/feeds.json?result=50";
           $.getJSON(url)
             .done(function(data){
               //console.log(data);
