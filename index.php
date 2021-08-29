@@ -145,7 +145,10 @@
                   light_status="light";
                 }
                 
-
+              $("#lastTemperature").text(feed[v].field2+" C");
+              $("#lastHumidity").text(feed[v].field1+" %");
+              $("#lightStatus").text(light_status);
+              $("#lastUpdate").text(dateStr);
 
 
                 
@@ -173,10 +176,7 @@
 
 
               
-              $("#lastTemperature").text(feed[49].field2+" C");
-              $("#lastHumidity").text(feed[49].field1+" %");
-              $("#lightStatus").text(light_status);
-              $("#lastUpdate").text(dateStr);
+              
               
               
             })
