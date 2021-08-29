@@ -145,14 +145,11 @@
                   light_status="light";
                 }
                 */
-              $("#lastTemperature").text(feed[0].field2+" C");
-              $("#lastHumidity").text(feed[0].field1+" %");
-              $("#lightStatus").text(light_status);
-              $("#lastUpdate").text(dateStr);
 
 
 
-                console.log(k,humi);
+                
+                
              });
              
               var data=new Object();
@@ -176,8 +173,11 @@
 
 
               
-             
-              console.log(humi);
+              $("#lastTemperature").text(feed[0].field2+" C");
+              $("#lastHumidity").text(feed[0].field1+" %");
+              $("#lightStatus").text(light_status);
+              $("#lastUpdate").text(dateStr);
+              
               
             })
             .fail(function(error){
