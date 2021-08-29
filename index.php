@@ -145,8 +145,8 @@
                   light_status="light";
                 }
                 
-              $("#lastTemperature").text(feed[v].field2+" C");
-              $("#lastHumidity").text(feed[v].field1+" %");
+              $("#lastTemperature").text(feed[k].field2+" C");
+              $("#lastHumidity").text(feed[k].field1+" %");
               $("#lightStatus").text(light_status);
               $("#lastUpdate").text(dateStr);
 
