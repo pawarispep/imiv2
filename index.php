@@ -173,8 +173,8 @@
 
 
               
-              $("#lastTemperature").text(feed[0].field2+" C");
-              $("#lastHumidity").text(feed[0].field1+" %");
+              $("#lastTemperature").text(feed[49].field2+" C");
+              $("#lastHumidity").text(feed[49].field1+" %");
               $("#lightStatus").text(light_status);
               $("#lastUpdate").text(dateStr);
               
