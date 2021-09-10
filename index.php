@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <!--<meta http-equiv="refresh" content="15"; url=" <?php echo $_SERVER['PHP_SELF']; ?>">-->
   </head>
 
   <body>
@@ -113,7 +114,7 @@
      
       $(()=>{
           
-          let url="https://api.thingspeak.com/channels/1458413/feeds.json?result=50";
+          let url="https://api.thingspeak.com/channels/1458413/feeds.json?results=240";
           $.getJSON(url)
             .done(function(data){
               //console.log(data);
@@ -134,24 +135,24 @@
              var light=[];
              var light_status;
              
+             
              $.each(feed,(k,v)=>{
                 xlabel.push(v.entry_id);
                 humi.push(v.field1);
                 temp.push(v.field2);
                 light.push(v.field3);
-                if(light>500){
+                
+                if(light[k]>500){
                   light_status="dark";
                 }else {
                   light_status="light";
                 }
-                
-              $("#lastTemperature").text(feed[k].field2+" C");
-              $("#lastHumidity").text(feed[k].field1+" %");
+              $("#lastTemperature").text(temp[k]+" C");
+              //$("#lastTemperature").text(feed[k].field2+" C");
+              $("#lastHumidity").text(humi[k]+" %");
               $("#lightStatus").text(light_status);
               $("#lastUpdate").text(dateStr);
 
-
-                
                 
              });
              
@@ -174,11 +175,6 @@
               data3.label=chan.field3;
               showGraph(data3);
 
-
-              
-              
-              
-              
             })
             .fail(function(error){
             });
